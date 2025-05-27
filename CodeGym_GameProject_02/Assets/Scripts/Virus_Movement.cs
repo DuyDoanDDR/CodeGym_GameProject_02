@@ -24,7 +24,7 @@ public class VirusMovement : MonoBehaviour
     void Start()
     {
         target = WayPoints.wayPoints[0];
-        velocity = new Vector3(0,0,-10);
+        velocity = new Vector3(0,0,-10f);
     }
 
     // Update is called once per frame
@@ -42,7 +42,7 @@ public class VirusMovement : MonoBehaviour
 
 
 
-        if (Vector3.Distance(transform.position, target.position) < 0.5)
+        if (Vector3.Distance(transform.position, target.position) < 0.5f)
         {
             if (wayPointsIndex >= WayPoints.wayPoints.Length - 1)
             {
