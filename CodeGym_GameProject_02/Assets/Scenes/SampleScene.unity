@@ -3669,7 +3669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f0f226df8129e04d859192361e18dad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  virusPrefabs: {fileID: 6435228614628203643, guid: 9374188086de947449d434bbed9f8e4a,
+  virusPrefabs: {fileID: 3604923359978367132, guid: 48018c444e23c4540a90c74f26614b19,
     type: 3}
   Spawnpoint: {fileID: 1856397687}
   countDownTime: 3

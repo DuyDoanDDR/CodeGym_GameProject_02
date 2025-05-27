@@ -10,8 +10,7 @@ public class VirusMovement : MonoBehaviour
     private Transform target;
     private int wayPointsIndex = 0;
     public static Vector3 virusPosition;
-    //public static Vector3 virusVelocity;
-    //public static float damage = 10;
+    
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -24,16 +23,16 @@ public class VirusMovement : MonoBehaviour
     void Start()
     {
         target = WayPoints.wayPoints[0];
-        velocity = new Vector3(0,0,-10f);
+        velocity = new Vector3(10f,0,0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //virusVelocity = velocity;
+       
         virusPosition = transform.position;
-        //transform.Translate(velocity.normalized * Time.deltaTime);
-        Vector3 moveDir = (transform.position - target.position).normalized;
+        
+        Vector3 moveDir = (target.position - transform.position).normalized;
 
         Vector3 newPos = Vector3.MoveTowards(transform.position, target.position, velocity.magnitude * Time.deltaTime);
         transform.position = newPos;

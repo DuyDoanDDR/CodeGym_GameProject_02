@@ -39,6 +39,6 @@ public class WaveSpawner : MonoBehaviour
     }
     void SpawnViruses()
     {
-        Instantiate(virusPrefabs, Spawnpoint.position, Spawnpoint.rotation);
+        Instantiate(virusPrefabs, Spawnpoint.position, Quaternion.Euler(0,90,0));
     }
 }
