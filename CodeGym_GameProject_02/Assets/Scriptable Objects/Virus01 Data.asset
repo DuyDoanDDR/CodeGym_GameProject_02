@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Virus01 Data
   m_EditorClassIdentifier: 
   maxHp: 3
-  speed: 5
+  speed: 52
   virusPrefab: {fileID: 5108779367755177529, guid: 48018c444e23c4540a90c74f26614b19,
     type: 3}
   damaged: 1
