@@ -1,44 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public Transform virusPrefabs; 
+    public Virus01SO virusData;
     public Transform Spawnpoint;
     public float countDownTime = 3f;
     public float timeBetweenWaves = 5f;
-    private int waveNumber = 1;
-   
+    public float spawnDelayTime = 0.1f;
+    private int waveNumber = 0;
+    //public TMPro.TextMeshProUGUI TimerText;
+    public static WaveSpawner instance;
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ( countDownTime < 0.2f)
+        if (countDownTime < 0.2f)
         {
-            SpawnWaves();
+            StartCoroutine(SpawnWaves());
             countDownTime = timeBetweenWaves;
         }
         countDownTime -= Time.deltaTime;
+        countDownTime = Mathf.Clamp(countDownTime, 0f, Mathf.Infinity);
+        //int timeSeconds = Mathf.FloorToInt(countDownTime);
+        //TimerText.text = string.Format("Next Wave: {0}", timeSeconds.ToString());
     }
-     
-    void SpawnWaves()
+
+    IEnumerator SpawnWaves()
     {
+        waveNumber++;
         for (int i = 0; i < waveNumber; i++)
         {
             SpawnViruses();
-           
+            yield return new WaitForSeconds(spawnDelayTime);
         }
-        waveNumber++;
+
         Debug.Log("Wave is coming !");
     }
     void SpawnViruses()
     {
-        Instantiate(virusPrefabs, Spawnpoint.position, Quaternion.Euler(0,90,0));
+        Instantiate(virusData.virusPrefab, Spawnpoint.position, Quaternion.Euler(0, 90, 0));
     }
 }

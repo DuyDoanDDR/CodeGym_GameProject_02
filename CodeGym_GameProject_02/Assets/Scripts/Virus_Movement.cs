@@ -9,7 +9,9 @@ public class VirusMovement : MonoBehaviour
     public static Vector3 velocity;
     private Transform target;
     private int wayPointsIndex = 0;
-    public static Vector3 virusPosition;
+    //public float virusSpeed = 10f;
+    public Virus01SO virusData;
+    //public static Vector3 virusPosition;
     
 
     private void OnCollisionEnter(Collision collision)
@@ -23,34 +25,39 @@ public class VirusMovement : MonoBehaviour
     void Start()
     {
         target = WayPoints.wayPoints[0];
-        velocity = new Vector3(10f,0,0);
+        velocity = new Vector3(1f,0,0).normalized;
     }
 
-    // Update is called once per frame
-    void Update()
+    void GetNextWayPoints()
     {
-       
-        virusPosition = transform.position;
-        
-        Vector3 moveDir = (target.position - transform.position).normalized;
-
-        Vector3 newPos = Vector3.MoveTowards(transform.position, target.position, velocity.magnitude * Time.deltaTime);
-        transform.position = newPos;
-        Quaternion targetRotate = Quaternion.LookRotation(moveDir);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotate, velocity.magnitude * Time.deltaTime);
-
-
-
         if (Vector3.Distance(transform.position, target.position) < 0.5f)
         {
             if (wayPointsIndex >= WayPoints.wayPoints.Length - 1)
             {
-                Destroy(gameObject);
+                EndPath();
                 return;
             }
             wayPointsIndex++;
             target = WayPoints.wayPoints[wayPointsIndex];
         }
+    }
+
+    void EndPath()
+    {
+        PlayerStats.lives -= virusData.damaged;
+        Destroy(gameObject);
+    }
+    // Update is called once per frame
+    void Update()
+    {  
+        Vector3 moveDir = (target.position - transform.position).normalized;
+        Vector3 newPos = Vector3.MoveTowards(transform.position, target.position, velocity.magnitude * virusData.speed * Time.deltaTime);
+        transform.position = newPos;
+        Quaternion targetRotate = Quaternion.LookRotation(moveDir);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotate, velocity.magnitude * virusData.speed * Time.deltaTime);
+
+        GetNextWayPoints();
+       
 
     }
 }

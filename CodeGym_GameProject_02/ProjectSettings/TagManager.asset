@@ -5,8 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Tower
-  - Invaders
-  - Defenders
+  - Virus
+  - Defender
   layers:
   - Default
   - TransparentFX

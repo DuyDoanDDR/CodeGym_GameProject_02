@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3502219663150329461}
   - component: {fileID: 3355129663378348778}
   - component: {fileID: 8278426745694186604}
+  - component: {fileID: -2422563258542678979}
   m_Layer: 0
   m_Name: DefendSlot
   m_TagString: Untagged
@@ -105,3 +106,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-2422563258542678979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5227283110845099449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2353b4cac4e2b45a7e762b36379800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverColor: {r: 0, g: 1, b: 0.5029988, a: 0}
+  startColor: {r: 0, g: 0, b: 0, a: 0}
+  rend: {fileID: 0}
+  buildPositionOffset: {x: 0, y: 2.5, z: 0}
