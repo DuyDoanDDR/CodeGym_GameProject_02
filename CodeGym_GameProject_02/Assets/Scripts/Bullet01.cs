@@ -2,22 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet01 : MonoBehaviour
 {
     private Transform target;
-    public float speed = 70f;
-    public int damage = 1;
-    public static Bullet instance;
+    public float speed = 70;
+    public int damage;
+    public static Bullet01 instance;
+
+    public Defender01SO defender01;
+
     
  
     public void Seek(Transform _target)
     {
-        target = _target;       
+        target = _target;  
+       
     }
     // Start is called before the first frame update
     void Start()
     {
-        instance = this;        
+        instance = this;
+        damage = defender01.damage;
     }
 
     // Update is called once per frame

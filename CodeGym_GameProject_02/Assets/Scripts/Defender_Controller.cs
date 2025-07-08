@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class Defender_Controller : MonoBehaviour
+public class Defender01_Controller : MonoBehaviour
 {
     private Transform targetPos;
 
@@ -20,9 +20,17 @@ public class Defender_Controller : MonoBehaviour
 
     public ParticleSystem burstEffect;
 
+    public Defender01SO defender01Data;
+
+    private void Awake()
+    {
+        range = defender01Data.range;
+        fireRate = defender01Data.fireRate;
+    }
     // Start is called before the first frame update
     void Start()
     {
+       
 
     }
 
@@ -84,7 +92,7 @@ public class Defender_Controller : MonoBehaviour
         Debug.Log("Shoot");
 
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefs, firePoint.position, firePoint.rotation);
-        Bullet bulletInstance = bulletGO.GetComponent<Bullet>();
+        Bullet01 bulletInstance = bulletGO.GetComponent<Bullet01>();
         
         if (burstEffect != null)
         {

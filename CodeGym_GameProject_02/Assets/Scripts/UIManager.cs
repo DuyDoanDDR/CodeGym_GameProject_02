@@ -68,11 +68,7 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        //if (gameManager.gameIsStopped)
-        //{
-        //    GameManager.gameWin = false;
-        //    GameManager.gameOver = false;
-        //}
+        
 
     }
     public void QuitButton()

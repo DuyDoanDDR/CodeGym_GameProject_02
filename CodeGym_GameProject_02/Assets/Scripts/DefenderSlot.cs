@@ -24,10 +24,7 @@ public class DefenderSlot : MonoBehaviour
         rend = GetComponent<Renderer>();
         startColor = rend.material.color;
 
-        buildManager = BuildManager.instance;
-
-       
-       
+        buildManager = BuildManager.instance;              
     }
 
     public Vector3 GetBuildPosition()

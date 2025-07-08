@@ -55,6 +55,7 @@ MonoBehaviour:
     type: 3}
   firePoint: {fileID: 6692100378052003681}
   burstEffect: {fileID: 6387440289992022779}
+  defender01Data: {fileID: 11400000, guid: c905d0b834d6eec4aacd250d44fe1a48, type: 2}
 --- !u!1 &3614001907586971873
 GameObject:
   m_ObjectHideFlags: 0
