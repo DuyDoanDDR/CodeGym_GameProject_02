@@ -9,11 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e8d6f2078639aa4e99b4dcdaeac8dec, type: 3}
-  m_Name: Defender01 Data
+  m_Script: {fileID: 11500000, guid: e83f79fd6354de24d96e021d8c93268e, type: 3}
+  m_Name: Defender01Data
   m_EditorClassIdentifier: 
   Prefab: {fileID: 6890580606796697988, guid: 32095f65aa852ac479cf5842e52514cc, type: 3}
+  BulletPrefab: {fileID: 8617302808359129411, guid: 3c1e65d2bfe197c409ef13c7861e2b71,
+    type: 3}
+  Material: {fileID: 2100000, guid: 736de15d3d6bbce49935b165544891c9, type: 2}
   damage: 1
   cost: 10
   range: 11.5
   fireRate: 1
+  fireCountdown: 0
+  rotateSpeed: 10
+  targetTag: Virus

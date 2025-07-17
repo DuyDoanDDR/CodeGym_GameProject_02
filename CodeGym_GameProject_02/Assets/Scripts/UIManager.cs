@@ -69,11 +69,11 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1.0f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         
-
     }
     public void QuitButton()
     {
         Application.Quit();
+        Debug.Log("Quit!");
     }
     // Update is called once per frame
     void Update()

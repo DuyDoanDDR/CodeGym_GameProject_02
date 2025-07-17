@@ -2,27 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet01 : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
     private Transform target;
-    public float speed = 70;
+    public float speed;
     public int damage;
-    public static Bullet01 instance;
+    public static Bullet instance;
 
-    public Defender01SO defender01;
+   
+    public DefenderData defender;
 
     
  
     public void Seek(Transform _target)
     {
-        target = _target;  
-       
+        target = _target;       
     }
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
-        damage = defender01.damage;
+        damage = defender.damage;
     }
 
     // Update is called once per frame
@@ -49,7 +49,7 @@ public class Bullet01 : MonoBehaviour
     {
         if (virus.tag  == "Virus")
         {
-            Virus01 v = virus.GetComponent<Virus01>(); 
+            Virus v = virus.GetComponent<Virus>(); 
            if (v != null)
             {
                 v.TakeDamage(damage);

@@ -9,9 +9,10 @@ public class VirusMovement : MonoBehaviour
     public static Vector3 velocity;
     private Transform target;
     private int wayPointsIndex = 0;
-    //public float virusSpeed = 10f;
-    public Virus01SO virusData;
-    //public static Vector3 virusPosition;
+    
+    
+    public VirusData virusData;
+   //public Virus virus;
     
 
     private void OnCollisionEnter(Collision collision)
@@ -24,6 +25,7 @@ public class VirusMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         target = WayPoints.wayPoints[0];
         velocity = new Vector3(1f,0,0).normalized;
     }
@@ -51,13 +53,17 @@ public class VirusMovement : MonoBehaviour
     void Update()
     {  
         Vector3 moveDir = (target.position - transform.position).normalized;
-        Vector3 newPos = Vector3.MoveTowards(transform.position, target.position, velocity.magnitude * virusData.speed * Time.deltaTime);
+        Vector3 newPos = Vector3.MoveTowards(transform.position, target.position, velocity.magnitude * GetComponent<Virus>().VirusUpdateSpeed * Time.deltaTime);
         transform.position = newPos;
         Quaternion targetRotate = Quaternion.LookRotation(moveDir);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotate, velocity.magnitude * virusData.speed * Time.deltaTime);
-
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotate, velocity.magnitude * GetComponent<Virus>().VirusUpdateSpeed * Time.deltaTime);
         GetNextWayPoints();
-       
+
+        GetComponent<Virus>().VirusUpdateSpeed = virusData.speed;
+
+
+
+
 
     }
 }

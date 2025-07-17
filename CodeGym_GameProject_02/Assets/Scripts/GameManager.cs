@@ -25,9 +25,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         gameOver = false;
-        gameWin = false;
-        
+        gameWin = false;       
         instance = this;
+        Time.timeScale = 1.0f;
     }
 
     // Update is called once per frame

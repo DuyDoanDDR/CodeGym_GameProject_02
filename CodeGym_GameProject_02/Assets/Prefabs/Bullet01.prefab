@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1573177336549404069}
   - component: {fileID: 1771654745338697218}
   - component: {fileID: 938827849921225524}
-  - component: {fileID: 5670360338344177189}
+  - component: {fileID: -3006415092901232988}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Bullet01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5670360338344177189
+--- !u!114 &-3006415092901232988
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,9 +93,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8617302808359129411}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86a7b4419ffbca74fbc760722e15d2ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f97d058ebb1773468a9318efa2acb5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
   damage: 1
-  defender01: {fileID: 11400000, guid: c905d0b834d6eec4aacd250d44fe1a48, type: 2}
+  defender: {fileID: 11400000, guid: e4acf21b81ed45749a46e58cb498b223, type: 2}

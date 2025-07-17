@@ -6,10 +6,11 @@ using UnityEngine;
 public class BuildManager : MonoBehaviour
 {
     public static BuildManager instance;
-    //private DefenderBluePrint defender01;
+    
 
-    private Defender01SO defender01;
+    private DefenderData builtDefender;
 
+  
 
     private void Awake()
     {
@@ -17,14 +18,13 @@ public class BuildManager : MonoBehaviour
     }
 
 
-    //public bool Canbuild { get { return defender01 != null; } }
-    public bool Canbuild { get { return defender01 != null; } }
+    public bool Canbuild { get { return builtDefender != null; } }
 
-    public bool IsEnoughMoney => PlayerStats.money >= defender01.cost;
+    public bool IsEnoughMoney => PlayerStats.money >= builtDefender.cost;
 
     public void BuildDefenderOn(DefenderSlot slot)
     {
-        if (PlayerStats.money < defender01.cost)
+        if (PlayerStats.money < builtDefender.cost)
         {
 
             Debug.Log("Not enough money");
@@ -32,16 +32,16 @@ public class BuildManager : MonoBehaviour
 
         }
 
-        PlayerStats.money -= defender01.cost;
+        PlayerStats.money -= builtDefender.cost;
 
-        GameObject defender = (GameObject)Instantiate(defender01.Prefab, slot.GetBuildPosition(), slot.GetBuildRotation());
+        GameObject defender = (GameObject)Instantiate(builtDefender.Prefab, slot.GetBuildPosition(), slot.GetBuildRotation());
         slot.defender = defender;
 
         Debug.Log("Money Left :" + PlayerStats.money);
     }
-    public void SelectDefenderToBuild(Defender01SO defender)
+    public void SelectDefenderToBuild(DefenderData defenderPrefabs)
     {
-        defender01 = defender;
+        builtDefender = defenderPrefabs;
     }
 
 

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e83f79fd6354de24d96e021d8c93268e, type: 3}
+  m_Name: Defender03Data
+  m_EditorClassIdentifier: 
+  BurstType: 1
+  Beam: {fileID: 0}
+  Prefab: {fileID: 7313353460477043367, guid: 2541379906d0c594bba891f2cfa1afdf, type: 3}
+  BulletPrefab: {fileID: 0}
+  Material: {fileID: 2100000, guid: b30eff48a5a6d0e4ca6822b3363c94de, type: 2}
+  damage: 1
+  cost: 50
+  range: 11.5
+  fireRate: 0
+  fireCountdown: 0
+  rotateSpeed: 0
+  targetTag: Virus

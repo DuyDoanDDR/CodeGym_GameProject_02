@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(fileName = "Virus01 Data", menuName = "Scriptable Objects/Virus01 Data")]
-public class Virus01SO : ScriptableObject
+[CreateAssetMenu(fileName = "Virus Data", menuName = "Scriptable Objects/Virus Data")]
+public class VirusData : ScriptableObject
 {
-    public int maxHp;
+    public float maxHp;
     public float speed;
     public GameObject virusPrefab;
     public int damaged;

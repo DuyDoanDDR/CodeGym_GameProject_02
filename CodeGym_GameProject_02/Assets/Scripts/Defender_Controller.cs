@@ -4,28 +4,41 @@ using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class Defender01_Controller : MonoBehaviour
-{
+public class Defender_Controller : MonoBehaviour
+{           
     private Transform targetPos;
 
-    public float range = 11.5f;
+    private float range;
     private GameObject currentTarget;
-    public string targetTag = "Virus";
-    public float rotateSpeed;
+    private string targetTag;
+    private float rotateSpeed;
+    
 
-    public float fireRate = 1f;
+    private float fireRate;
     private float fireCountdown = 0f;
-    public GameObject bulletPrefs;
+    private GameObject bulletPrefs;
+    private float slowAmount = 0.3f;
+
     public Transform firePoint;
 
     public ParticleSystem burstEffect;
+    public LineRenderer laserBeam;
 
-    public Defender01SO defender01Data;
+    [Header ("Data")]
+    public VirusData virusData;
+    public DefenderData defenderData;
 
     private void Awake()
     {
-        range = defender01Data.range;
-        fireRate = defender01Data.fireRate;
+      
+        range = defenderData.range;
+        fireRate = defenderData.fireRate;
+        fireCountdown = defenderData.fireCountdown;
+        rotateSpeed = defenderData.rotateSpeed;
+        bulletPrefs = defenderData.BulletPrefab;
+        targetTag = defenderData.targetTag;
+       
+
     }
     // Start is called before the first frame update
     void Start()
@@ -44,6 +57,7 @@ public class Defender01_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (currentTarget != null)
         {
             float distanceToVirus = Vector3.Distance(transform.position, currentTarget.transform.position);
@@ -53,57 +67,94 @@ public class Defender01_Controller : MonoBehaviour
             {
                 Quaternion defenderRotate = Quaternion.LookRotation(targetDir);
                 transform.rotation = Quaternion.Slerp(transform.rotation, defenderRotate, rotateSpeed * Time.deltaTime);
-                if (fireCountdown <= 0f)
+                if (defenderData.BurstType == BurstType.BulletType)
                 {
-                    Shoot();
-                    fireCountdown = 1f / fireRate;
+                    if (fireCountdown <= 0f)
+                    {
+
+                        Shoot();
+                        fireCountdown = 1f / fireRate;
+                    }
+                    fireCountdown -= Time.deltaTime;
                 }
-                fireCountdown -= Time.deltaTime;
+                else if (defenderData.BurstType == BurstType.BeamType)
+                {
+               
+                    Laser();
+                }
+               
             }
             else
-            {
+            {                            
                 currentTarget = null;
             }
         }
         else
         {
-            GameObject[] viruses = GameObject.FindGameObjectsWithTag(targetTag);
-            foreach (GameObject virus in viruses)
+            if (defenderData.BurstType == BurstType.BeamType)
             {
-                if (virus == null)
+                if (laserBeam.enabled)
                 {
-                    continue;
+                    laserBeam.enabled = false;
                 }
-                if (Vector3.Distance(transform.position, virus.transform.position) <= range)
+
+            }
+            
+            if (VirusManager.instance != null && VirusManager.instance.allViruses != null)
+            {
+                foreach (GameObject virus in VirusManager.instance.allViruses)
                 {
-                    currentTarget = virus;
-                    targetPos = currentTarget.transform;
-                    break;
+                    if (virus == null)
+                    {
+                        continue;
+                    }
+                    if (Vector3.Distance(transform.position, virus.transform.position) <= range)
+                    {
+                        currentTarget = virus;
+                        targetPos = currentTarget.transform;
+                        break;
+                    }
                 }
             }
-        }
-
-       
-
+            
+        }       
     }
 
+    void Laser()
+    {
+        currentTarget.GetComponent<Virus>().TakeDamage(defenderData.damage * Time.deltaTime);
+        currentTarget.GetComponent<Virus>().Slow(slowAmount);
+        
+        if (!laserBeam.enabled)
+        {
+            laserBeam.enabled = true;
+        }
+        BurstEffect();
+        laserBeam.SetPosition(0, firePoint.position);
+        laserBeam.SetPosition(1, targetPos.position);
+    }
     void Shoot()
     {
         Debug.Log("Shoot");
 
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefs, firePoint.position, firePoint.rotation);
-        Bullet01 bulletInstance = bulletGO.GetComponent<Bullet01>();
-        
+        Bullet bulletInstance = bulletGO.GetComponent<Bullet>();
+
+        BurstEffect();
+
+        if (bulletInstance != null)
+        {
+            bulletInstance.Seek(targetPos);
+        }
+    }
+
+    void BurstEffect()
+    {
         if (burstEffect != null)
         {
             burstEffect.Stop();
             burstEffect.Clear();
             burstEffect.Play();
-        }
-
-        if (bulletInstance != null)
-        {
-            bulletInstance.Seek(targetPos);
         }
     }
 

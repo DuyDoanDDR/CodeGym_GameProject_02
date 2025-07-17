@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc322a50da5f3445b5adf49bf507a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  virus01Data: {fileID: 11400000, guid: d9c7283c3de15824ea908fd452b382b2, type: 2}
+  virusData: {fileID: 11400000, guid: d9c7283c3de15824ea908fd452b382b2, type: 2}
 --- !u!1001 &8571336485532016995
 PrefabInstance:
   m_ObjectHideFlags: 0

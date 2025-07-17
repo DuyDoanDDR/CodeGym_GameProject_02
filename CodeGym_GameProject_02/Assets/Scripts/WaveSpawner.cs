@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public Virus01SO virusData;
+    public VirusData virusData;
     public Transform Spawnpoint;
     public float countDownTime = 3f;
     public float timeBetweenWaves = 5f;
@@ -35,8 +35,7 @@ public class WaveSpawner : MonoBehaviour
         }
         countDownTime -= Time.deltaTime;
         countDownTime = Mathf.Clamp(countDownTime, 0f, Mathf.Infinity);
-        //int timeSeconds = Mathf.FloorToInt(countDownTime);
-        //TimerText.text = string.Format("Next Wave: {0}", timeSeconds.ToString());
+        
     }
 
     IEnumerator SpawnWaves()
