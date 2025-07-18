@@ -28,6 +28,8 @@ public class Defender_Controller : MonoBehaviour
     public VirusData virusData;
     public DefenderData defenderData;
 
+    public LayerMask virusLayer;
+
     private void Awake()
     {
       
@@ -63,31 +65,40 @@ public class Defender_Controller : MonoBehaviour
             float distanceToVirus = Vector3.Distance(transform.position, currentTarget.transform.position);
             Vector3 targetDir = (currentTarget.transform.position - transform.position).normalized;
             targetDir.y = 0;
-            if (distanceToVirus <= range)
+            if (Physics.Raycast(transform.position, targetDir, out RaycastHit hit, range, virusLayer))
             {
-                Quaternion defenderRotate = Quaternion.LookRotation(targetDir);
-                transform.rotation = Quaternion.Slerp(transform.rotation, defenderRotate, rotateSpeed * Time.deltaTime);
-                if (defenderData.BurstType == BurstType.BulletType)
+                if (hit.collider.gameObject == currentTarget)
                 {
-                    if (fireCountdown <= 0f)
+                    Quaternion defenderRotate = Quaternion.LookRotation(targetDir);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, defenderRotate, rotateSpeed * Time.deltaTime);
+                    if (defenderData.BurstType == BurstType.BulletType)
+                    {
+                        if (fireCountdown <= 0f)
+                        {
+
+                            Shoot();
+                            fireCountdown = 1f / fireRate;
+                        }
+                        fireCountdown -= Time.deltaTime;
+                    }
+                    else if (defenderData.BurstType == BurstType.BeamType)
                     {
 
-                        Shoot();
-                        fireCountdown = 1f / fireRate;
+                        Laser();
                     }
-                    fireCountdown -= Time.deltaTime;
                 }
-                else if (defenderData.BurstType == BurstType.BeamType)
+                else
                 {
-               
-                    Laser();
+                    currentTarget = null;
                 }
+            }
+
+            //    if (distanceToVirus <= range)
+            //{
                
-            }
-            else
-            {                            
-                currentTarget = null;
-            }
+               
+            //}
+           
         }
         else
         {
@@ -101,6 +112,7 @@ public class Defender_Controller : MonoBehaviour
             }
             
             if (VirusManager.instance != null && VirusManager.instance.allViruses != null)
+
             {
                 foreach (GameObject virus in VirusManager.instance.allViruses)
                 {
@@ -108,12 +120,21 @@ public class Defender_Controller : MonoBehaviour
                     {
                         continue;
                     }
-                    if (Vector3.Distance(transform.position, virus.transform.position) <= range)
+                    Vector3 targetDir = (virus.transform.position - transform.position).normalized;
+                    if (Physics.Raycast(transform.position, targetDir, out RaycastHit hit, range, virusLayer))
                     {
-                        currentTarget = virus;
-                        targetPos = currentTarget.transform;
-                        break;
+                        if (hit.collider.gameObject == virus)
+                        {
+                            currentTarget = virus;
+                            targetPos = currentTarget.transform;
+                            break;
+                        }
+                        
                     }
+                    //if (Vector3.Distance(transform.position, virus.transform.position) <= range)
+                    //{
+                        
+                    //}
                 }
             }
             

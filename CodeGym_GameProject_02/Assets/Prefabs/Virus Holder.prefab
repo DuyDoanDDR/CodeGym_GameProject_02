@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3604923359978367132}
   - component: {fileID: 5488287329907362325}
   - component: {fileID: 2358866004762809976}
-  m_Layer: 0
+  - component: {fileID: 125573757831543117}
+  m_Layer: 3
   m_Name: Virus Holder
   m_TagString: Virus
   m_Icon: {fileID: 0}
@@ -60,6 +61,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virusData: {fileID: 11400000, guid: d9c7283c3de15824ea908fd452b382b2, type: 2}
+--- !u!65 &125573757831543117
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5108779367755177529}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.24, y: 1.33, z: 2.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &8571336485532016995
 PrefabInstance:
   m_ObjectHideFlags: 0

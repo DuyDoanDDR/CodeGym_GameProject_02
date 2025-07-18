@@ -49,7 +49,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 6692100378052003681}
   burstEffect: {fileID: 7332182550178891318}
+  laserBeam: {fileID: 0}
+  virusData: {fileID: 0}
   defenderData: {fileID: 11400000, guid: e4acf21b81ed45749a46e58cb498b223, type: 2}
+  virusLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &3614001907586971873
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,6 +303,26 @@ PrefabInstance:
       propertyPath: startDelay.scalar
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 462569062964451539, guid: f7a3266f8d6708646a2d58b273f32cef,
+        type: 3}
+      propertyPath: ShapeModule.m_Position.x
+      value: -2.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 462569062964451539, guid: f7a3266f8d6708646a2d58b273f32cef,
+        type: 3}
+      propertyPath: ShapeModule.m_Position.y
+      value: 0.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 462569062964451539, guid: f7a3266f8d6708646a2d58b273f32cef,
+        type: 3}
+      propertyPath: ShapeModule.m_Position.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 462569062964451539, guid: f7a3266f8d6708646a2d58b273f32cef,
+        type: 3}
+      propertyPath: ShapeModule.m_Rotation.y
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 1046511869057866852, guid: f7a3266f8d6708646a2d58b273f32cef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -353,6 +378,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BurstEffect01
       objectReference: {fileID: 0}
+    - target: {fileID: 4686829366197372634, guid: f7a3266f8d6708646a2d58b273f32cef,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5fb730e7815bf5947b8e56118752e249, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

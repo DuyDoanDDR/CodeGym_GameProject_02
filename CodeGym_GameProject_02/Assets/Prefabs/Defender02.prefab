@@ -47,11 +47,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b516ea4b06dfce438b8177cf508ddd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserBeam: {fileID: 0}
   firePoint: {fileID: 7979815349846271208}
   burstEffect: {fileID: 724670342498725356}
+  laserBeam: {fileID: 0}
   virusData: {fileID: 11400000, guid: d9c7283c3de15824ea908fd452b382b2, type: 2}
   defenderData: {fileID: 11400000, guid: 467a9936886adf04383e3cb964d56555, type: 2}
+  virusLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &1712956998444572028
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,13 +295,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 462569062964451539, guid: 778dfeb5f2771bb4097ad6a8ffd75faa,
         type: 3}
+      propertyPath: ShapeModule.m_Position.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 462569062964451539, guid: 778dfeb5f2771bb4097ad6a8ffd75faa,
+        type: 3}
       propertyPath: ShapeModule.m_Position.y
-      value: 1.99
+      value: 1.48
       objectReference: {fileID: 0}
     - target: {fileID: 462569062964451539, guid: 778dfeb5f2771bb4097ad6a8ffd75faa,
         type: 3}
       propertyPath: ShapeModule.m_Position.z
-      value: 4.07
+      value: 2.76
       objectReference: {fileID: 0}
     - target: {fileID: 462569062964451539, guid: 778dfeb5f2771bb4097ad6a8ffd75faa,
         type: 3}

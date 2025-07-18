@@ -162,11 +162,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b516ea4b06dfce438b8177cf508ddd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserBeam: {fileID: 9182242754209732959}
   firePoint: {fileID: 2702045590523110674}
   burstEffect: {fileID: 577503837314961618}
+  laserBeam: {fileID: 9182242754209732959}
   virusData: {fileID: 11400000, guid: d9c7283c3de15824ea908fd452b382b2, type: 2}
   defenderData: {fileID: 11400000, guid: 719c33ca131e50b49b18ba67d433bf72, type: 2}
+  virusLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!120 &9182242754209732959
 LineRenderer:
   serializedVersion: 2
@@ -448,7 +451,7 @@ PrefabInstance:
     - target: {fileID: 1388383610311890829, guid: f7a3266f8d6708646a2d58b273f32cef,
         type: 3}
       propertyPath: m_Name
-      value: BurstEffect01 (1)
+      value: BurstEffect03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
